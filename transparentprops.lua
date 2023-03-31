@@ -1,3 +1,10 @@
+
+local function check()
+
+local map = engine.GetMapName()
+
+if map ~= oldmap then
+
 local function props( prop )
     if string.find( prop:GetName(), 'models/props_' ) then
         prop:SetMaterialVarFlag( MATERIAL_VAR_ADDITIVE, true ) -- I use this since idk why AlphaModulate does not work on props
@@ -6,3 +13,11 @@ local function props( prop )
 end
 
 materials.Enumerate( props )
+
+oldmap = map
+        
+end
+
+end
+
+callbacks.Register("Draw", check)
