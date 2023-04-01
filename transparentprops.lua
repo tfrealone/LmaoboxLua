@@ -1,9 +1,10 @@
-
 local function check()
 
 local map = engine.GetMapName()
 
-if map ~= oldmap then
+local lp = entities.GetLocalPlayer()
+
+if map ~= oldmap and lp ~= nil then
 
 local function props( prop )
     if string.find( prop:GetName(), 'models/props_' ) then
@@ -15,8 +16,9 @@ end
 materials.Enumerate( props )
 
 oldmap = map
-        
+
 end
+
 
 end
 
